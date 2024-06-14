@@ -91,6 +91,30 @@ class _FormContent extends StatefulWidget {
 class __FormContentState extends State<_FormContent> {
   bool _isPasswordVisible = false;
 
+  void janelaAlerta(BuildContext context) {
+    Widget okButton = TextButton(
+      child: Text("Ok"),
+      onPressed: () {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Perfil()),
+        );
+      },
+    );
+    var alerta = AlertDialog(
+      actions: [okButton],
+      title: Text("Login"),
+      content: Text("Login Realizado com sucesso"),
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -173,13 +197,7 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    // Se as credenciais estiverem corretas, navegue para a página de perfil
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Perfil()), // Aqui adicionamos a navegação para a página de perfil
-                    );
-                  }
+                  janelaAlerta(context);
                 },
               ),
             ),

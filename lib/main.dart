@@ -4,7 +4,7 @@ import 'board.dart';
 import 'perfil.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp( MaterialApp(
     initialRoute: "/board",
     routes: {
       "/board": (context) => Board(),
